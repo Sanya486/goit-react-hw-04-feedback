@@ -15,7 +15,7 @@ const App = () => {
     bad: 0,
   });
 
-  
+
   const totalFeedbacksCount = () => {
      const feedbackNumbersArray = Object.values(state);
      const total = feedbackNumbersArray.reduce(
@@ -36,36 +36,7 @@ const App = () => {
 
   const onButtonClick = e => {
     const value = e.target.textContent;
-
-    switch (value) {
-      case 'good':
-        setState(prevValue => {
-          return (
-            {
-              ...prevValue, good: prevValue.good + 1
-            }
-          )
-        });
-        break;
-      case 'neutral':
-        setState(prevValue => {
-          return {
-            ...prevValue,
-            neutral: prevValue.neutral + 1,
-          };
-        });
-        break;
-      case 'bad':
-        setState(prevValue => {
-          return {
-            ...prevValue,
-            bad: prevValue.bad + 1,
-          };
-        });
-        break;
-      default: 
-        throw new Error ('Error in OnButtonClick function')
-    }
+    setState(prevValue => ({ ...prevValue, [value]: prevValue[value] + 1}))
   };
 
 
